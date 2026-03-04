@@ -265,13 +265,17 @@ a:hover {
 
   .btn-primary,
   .btn-secondary {
-    flex: 1;
-    width: 100%;
+    flex: 0 1 auto;
+    width: auto;
+    max-width: calc(50% - 4px);
+    /* Don't exceed half screen width, account for gap */
     min-width: 0;
-    font-size: 0.85rem;
-    padding: 12px 8px;
+    font-size: clamp(0.7rem, 3.5vw, 0.9rem);
+    padding: 12px 10px;
     margin-bottom: 0px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .hero-buttons {
