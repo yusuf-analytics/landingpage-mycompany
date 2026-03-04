@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Verqoz AI - Landing Page & Dashboard
 
-## Getting Started
+This is the primary repository for the Verqoz AI website. The project consists of two separate components that must run simultaneously for the AI Chatbot to work:
 
-First, run the development server:
+## 1. Menjalankan Website (Frontend)
+Bagian depan website dibangun menggunakan **Next.js**.
 
+1. Buka Terminal / CMD baru.
+2. Pastikan berada di folder `c:\Coding\Landing Page`.
+3. Jalankan perintah ini:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+4. Buka `http://localhost:3000` di Google Chrome.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2. Menjalankan AI Server (Backend)
+Bagian otak AI *Chatbot* dibangun menggunakan **Python (FastAPI)** yang terletak di dalam folder `python_backend`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Buka Terminal / CMD **kedua** (biarkan layar terminal pertama tadi tetap berjalan).
+2. Masuk ke folder backend dengan perintah:
+```bash
+cd python_backend
+```
+3. Nyalakan server AI dengan perintah ini:
+```bash
+python -m uvicorn main:app --reload
+```
+4. Biarkan terminal ini menyala agar robot AI di web bisa membalas pesan.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+**Catatan Penting:** 
+Kedua terminal (Terminal 1 untuk web, Terminal 2 untuk AI) harus selalu dalam keadaan menyala bersamaan. Jika salah satu di-*close* (X), website mungkin tidak bisa dibuka atau chatbot AI akan berhenti merespons.
