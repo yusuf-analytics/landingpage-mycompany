@@ -42,7 +42,11 @@ Pertanyaan: {question}"""
 
         prompt = ChatPromptTemplate.from_template(system_prompt)
 
-        loader = TextLoader("document.txt", encoding="utf-8")
+        # Build an absolute path to document.txt to prevent "file not found" errors in production
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        doc_path = os.path.join(current_dir, "document.txt")
+        
+        loader = TextLoader(doc_path, encoding="utf-8")
         documents = loader.load()
 
         from langchain_community.retrievers import TFIDFRetriever
