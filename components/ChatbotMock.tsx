@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Bot, User } from 'lucide-react';
 import { useAppContext } from './Providers';
@@ -47,6 +47,15 @@ export default function ChatbotMock() {
         });
     }, [t.chatGreeting]);
     const [input, setInput] = useState('');
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
 
     const handleSend = async () => {
         if (!input.trim()) return;
@@ -185,6 +194,7 @@ export default function ChatbotMock() {
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
+                            <div ref={messagesEndRef} />
                         </div>
 
                         <div className="chat-input-wrapper" style={{ padding: '20px 24px', borderTop: '1px solid var(--glass-border)', display: 'flex', gap: '12px', alignItems: 'center' }}>
