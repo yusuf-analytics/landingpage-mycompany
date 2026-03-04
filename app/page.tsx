@@ -16,7 +16,14 @@ export default function Home() {
 
   // Force scroll to top on mount/refresh
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Override browser default scroll restoration if possible
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    // Timeout ensures it runs after DOM paint
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' as any });
+    }, 50);
   }, []);
 
   return (
