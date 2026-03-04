@@ -58,7 +58,7 @@ export default function ChatbotMock() {
         setMessages(prev => [...prev, { role: 'bot', text: 'Typing...' }]);
 
         try {
-            const response = await fetch('http://localhost:8000/chat', {
+            const response = await fetch('https://verqoz-ai.up.railway.app/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
