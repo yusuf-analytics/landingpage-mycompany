@@ -1,11 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Scene from './Scene';
 import { useAppContext } from './Providers';
+import { Mail, MessageCircle } from 'lucide-react';
 
 export default function Hero() {
     const { t } = useAppContext();
+    const [showContact, setShowContact] = useState(false);
     return (
         <section className="hero-section" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
             <Scene />
@@ -27,8 +30,68 @@ export default function Hero() {
                     </p>
 
                     <div className="hero-buttons" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', paddingBottom: '32px', justifyContent: 'center' }}>
-                        <button className="btn-primary">{t.heroBtnPrimary}</button>
-                        <button className="btn-secondary">{t.heroBtnSecondary}</button>
+                        <button
+                            className="btn-primary"
+                            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                            {t.heroBtnPrimary}
+                        </button>
+                        <div style={{ position: 'relative' }}>
+                            <button
+                                className="btn-secondary"
+                                onClick={() => setShowContact(!showContact)}
+                            >
+                                {t.heroBtnSecondary}
+                            </button>
+                            <AnimatePresence>
+                                {showContact && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 10 }}
+                                        style={{
+                                            position: 'absolute',
+                                            top: '100%',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            marginTop: '12px',
+                                            background: 'var(--glass-bg)',
+                                            backdropFilter: 'blur(12px)',
+                                            border: '1px solid var(--glass-border)',
+                                            borderRadius: '16px',
+                                            padding: '8px',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: '8px',
+                                            minWidth: '200px',
+                                            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                                            zIndex: 20
+                                        }}
+                                    >
+                                        <a
+                                            href="mailto:yusuf.analytics@gmail.com"
+                                            style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '12px', transition: 'background 0.2s', textDecoration: 'none', color: 'inherit' }}
+                                            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                                            onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                        >
+                                            <Mail size={20} color="#3b82f6" />
+                                            <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>Email</span>
+                                        </a>
+                                        <a
+                                            href="https://wa.me/6281221999138"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '12px', transition: 'background 0.2s', textDecoration: 'none', color: 'inherit' }}
+                                            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                                            onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                        >
+                                            <MessageCircle size={20} color="#25D366" />
+                                            <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>WhatsApp</span>
+                                        </a>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     </div>
                 </motion.div>
             </div>
