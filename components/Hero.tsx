@@ -10,7 +10,7 @@ export default function Hero() {
     const { t } = useAppContext();
     const [showContact, setShowContact] = useState(false);
     return (
-        <section className="hero-section" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+        <section className="hero-section" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 50 }}>
             <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
                 <Scene />
             </div>
