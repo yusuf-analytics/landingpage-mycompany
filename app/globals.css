@@ -116,6 +116,14 @@ a:hover {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 32px;
+  justify-content: center;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -257,16 +265,20 @@ a:hover {
 
   .btn-primary,
   .btn-secondary {
-    width: auto;
-    min-width: 140px;
-    font-size: 0.9rem;
-    padding: 12px 20px;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    font-size: 0.85rem;
+    padding: 12px 8px;
     margin-bottom: 0px;
+    white-space: nowrap;
   }
 
   .hero-buttons {
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 12px;
+    gap: 8px;
+    width: 100%;
   }
 
   .hero-section {
@@ -303,9 +315,9 @@ a:hover {
   }
 
   .contact-dropdown {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    left: auto;
+    right: 0;
+    transform: none;
     min-width: 220px;
     width: max-content;
   }

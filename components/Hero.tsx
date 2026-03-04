@@ -31,7 +31,7 @@ export default function Hero() {
                         {t.heroDesc}
                     </p>
 
-                    <div className="hero-buttons" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', paddingBottom: '32px', justifyContent: 'center' }}>
+                    <div className="hero-buttons">
                         <button
                             className="btn-primary"
                             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
