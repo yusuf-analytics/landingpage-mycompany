@@ -46,27 +46,10 @@ export default function Hero() {
                             <AnimatePresence>
                                 {showContact && (
                                     <motion.div
+                                        className="contact-dropdown"
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 10 }}
-                                        style={{
-                                            position: 'absolute',
-                                            top: '100%',
-                                            left: '50%',
-                                            transform: 'translateX(-50%)',
-                                            marginTop: '12px',
-                                            background: 'var(--glass-bg)',
-                                            backdropFilter: 'blur(12px)',
-                                            border: '1px solid var(--glass-border)',
-                                            borderRadius: '16px',
-                                            padding: '8px',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            gap: '8px',
-                                            minWidth: '200px',
-                                            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-                                            zIndex: 20
-                                        }}
                                     >
                                         <a
                                             href="mailto:yusuf.analytics@gmail.com"

@@ -141,6 +141,27 @@ a:hover {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Contact Dropdown */
+.contact-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 240px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
 /* Services Grid & Slider */
 .services-container {
   display: grid;
@@ -279,5 +300,12 @@ a:hover {
   .chat-send-btn {
     width: 40px !important;
     height: 40px !important;
+  }
+
+  .contact-dropdown {
+    left: auto;
+    right: 0;
+    transform: none;
+    min-width: 200px;
   }
 }
