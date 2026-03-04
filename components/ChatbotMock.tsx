@@ -9,7 +9,8 @@ const renderFormattedText = (text: string) => {
     return text.split('\n').map((line, i) => {
         if (!line.trim()) return <div key={i} style={{ height: '8px' }} />;
 
-        const parts = line.split(/(\*\*.*?\*\*)/g);
+        // Match **bold** or [text](url)
+        const parts = line.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
 
         return (
             <div key={i} style={{
@@ -22,6 +23,22 @@ const renderFormattedText = (text: string) => {
                     if (part.startsWith('**') && part.endsWith('**')) {
                         return <strong key={j} style={{ fontWeight: 600 }}>{part.slice(2, -2)}</strong>;
                     }
+
+                    const linkMatch = part.match(/\[(.*?)\]\((.*?)\)/);
+                    if (linkMatch) {
+                        return (
+                            <a
+                                key={j}
+                                href={linkMatch[2]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: 'var(--accent-primary)', textDecoration: 'underline', fontWeight: 500 }}
+                            >
+                                {linkMatch[1]}
+                            </a>
+                        );
+                    }
+
                     if (part.startsWith('- ')) {
                         return <span key={j}>{part.slice(2)}</span>;
                     }
@@ -37,6 +54,7 @@ export default function ChatbotMock() {
     const [messages, setMessages] = useState([
         { role: 'bot', text: t.chatGreeting }
     ]);
+    const isInitialMount = useRef(true);
 
     useEffect(() => {
         setMessages(prev => {
@@ -50,7 +68,20 @@ export default function ChatbotMock() {
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        // Only scroll if it's not the initial mount to prevent jumping on page load
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+
+        // Find the scrollable container and scroll it, not the whole window
+        const container = messagesEndRef.current?.parentElement;
+        if (container) {
+            container.scrollTo({
+                top: container.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
     };
 
     useEffect(() => {
