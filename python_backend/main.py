@@ -18,10 +18,11 @@ load_dotenv()
 
 # Global variables to hold our LangChain objects
 rag_chain = None
+rag_error = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global rag_chain
+    global rag_chain, rag_error
     print("Loading RAG Pipeline...")
 
     try:
@@ -63,8 +64,10 @@ Pertanyaan: {question}"""
             | llm
         )
         print("RAG Pipeline Loaded Successfully.")
+        rag_error = None
     except Exception as e:
         print(f"Error loading RAG Pipeline: {e}")
+        rag_error = str(e)
         
     yield
     print("Shutting down...")
@@ -89,7 +92,8 @@ class ChatResponse(BaseModel):
 @app.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
     if not rag_chain:
-        return ChatResponse(reply="Maaf, sistem AI sedang offline atau gagal memuat data.")
+        error_msg = f"Sistem AI sedang offline. Detail Error: {rag_error}" if rag_error else "Maaf, sistem AI sedang offline atau gagal memuat data."
+        return ChatResponse(reply=error_msg)
     
     try:
         response = rag_chain.invoke(request.message)
