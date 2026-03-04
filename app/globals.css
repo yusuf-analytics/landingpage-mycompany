@@ -303,9 +303,16 @@ a:hover {
   }
 
   .contact-dropdown {
-    left: auto;
-    right: 0;
-    transform: none;
-    min-width: 200px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    min-width: 220px;
+    width: max-content;
   }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }

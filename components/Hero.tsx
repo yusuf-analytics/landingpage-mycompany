@@ -36,7 +36,7 @@ export default function Hero() {
                         >
                             {t.heroBtnPrimary}
                         </button>
-                        <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'relative', zIndex: 50 }}>
                             <button
                                 className="btn-secondary"
                                 onClick={() => setShowContact(!showContact)}
