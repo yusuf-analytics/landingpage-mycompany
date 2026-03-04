@@ -10,8 +10,10 @@ export default function Hero() {
     const { t } = useAppContext();
     const [showContact, setShowContact] = useState(false);
     return (
-        <section className="hero-section" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-            <Scene />
+        <section className="hero-section" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+                <Scene />
+            </div>
 
             <div className="container" style={{ position: 'relative', zIndex: 20, paddingTop: '100px' }}>
                 <motion.div
