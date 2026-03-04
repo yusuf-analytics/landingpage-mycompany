@@ -13,7 +13,7 @@ export default function Hero() {
         <section className="hero-section" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
             <Scene />
 
-            <div className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '100px' }}>
+            <div className="container" style={{ position: 'relative', zIndex: 20, paddingTop: '100px' }}>
                 <motion.div
                     className="hero-content"
                     initial={{ opacity: 0, y: 30 }}
