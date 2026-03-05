@@ -71,7 +71,7 @@ ATURAN WAJIB (System Guardrails):
         retriever.k = 5
 
         base_chain = (
-            {"context": lambda x: retriever.invoke(x["question"]), "question": lambda x: x["question"]}
+            RunnablePassthrough.assign(context=lambda x: retriever.invoke(x["question"]))
             | prompt
             | llm
         )
