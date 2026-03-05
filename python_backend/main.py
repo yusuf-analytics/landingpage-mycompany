@@ -14,7 +14,9 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.prompts import MessagesPlaceholder
 from langchain_community.chat_message_histories import RedisChatMessageHistory
+from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
+import redis
 
 # Load environment variables
 load_dotenv()
@@ -74,9 +76,20 @@ ATURAN WAJIB (System Guardrails):
             | llm
         )
 
+        memory_store = {}
+
         def get_message_history(session_id: str):
             redis_url = os.environ.get("REDIS_URL", "redis://localhost:6379")
-            return RedisChatMessageHistory(session_id, url=redis_url)
+            try:
+                # Fast ping to check if Redis is alive
+                client = redis.Redis.from_url(redis_url, socket_timeout=1)
+                client.ping()
+                return RedisChatMessageHistory(session_id, url=redis_url)
+            except Exception as e:
+                print(f"Redis offline for {session_id}, falling back to memory. Error: {e}")
+                if session_id not in memory_store:
+                    memory_store[session_id] = InMemoryChatMessageHistory()
+                return memory_store[session_id]
 
         rag_chain = RunnableWithMessageHistory(
             base_chain,
