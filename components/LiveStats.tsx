@@ -14,7 +14,7 @@ export default function LiveStats() {
     ];
 
     return (
-        <section style={{ padding: '0 0 40px', position: 'relative', zIndex: 10 }}>
+        <section style={{ padding: '80px 0 40px', position: 'relative', zIndex: 10 }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}

@@ -43,7 +43,7 @@ export default function Hero() {
                                 className="btn-secondary"
                                 onClick={() => setShowContact(!showContact)}
                             >
-                                Consultant
+                                {t.heroBtnContactUs}
                             </button>
                             <AnimatePresence>
                                 {showContact && (

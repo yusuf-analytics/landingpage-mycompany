@@ -55,6 +55,7 @@ export default function ChatbotMock() {
         { role: 'bot', text: t.chatGreeting }
     ]);
     const isInitialMount = useRef(true);
+    const [sessionId] = useState(() => Math.random().toString(36).substring(2, 15));
 
     useEffect(() => {
         setMessages(prev => {
@@ -98,12 +99,13 @@ export default function ChatbotMock() {
         setMessages(prev => [...prev, { role: 'bot', text: 'Typing...' }]);
 
         try {
-            const response = await fetch('https://verqoz-ai.up.railway.app/chat', {
+            const apiUrl = process.env.NEXT_PUBLIC_AI_API_URL || 'https://verqoz-ai.up.railway.app/chat';
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message: userMsg }),
+                body: JSON.stringify({ session_id: sessionId, message: userMsg }),
             });
 
             if (!response.ok) {

@@ -31,7 +31,10 @@ export default function Home() {
       <nav style={{ padding: '8px 0', position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100 }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'nowrap' }}>
           <div style={{ flexShrink: 0, zIndex: 101 }}>
-            <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
+            <span
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+            >
               <Image
                 src="/Desain_tanpa_judul-removebg-preview.png"
                 alt="Verqoz Logo"
@@ -40,12 +43,12 @@ export default function Home() {
                 style={{ objectFit: 'contain', width: 'auto', height: 'clamp(85px, 15vw, 130px)', marginLeft: '-8px' }}
                 priority
               />
-            </a>
+            </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <div style={{ display: 'flex', gap: '20px', fontWeight: 500, fontSize: '0.9rem', flexShrink: 0 }}>
-              <a href="#services">{t.navServices}</a>
-              <a href="#demo">{t.navDemo}</a>
+              <span style={{ cursor: 'pointer' }} onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>{t.navServices}</span>
+              <span style={{ cursor: 'pointer' }} onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}>{t.navDemo}</span>
             </div>
             <SettingsToggle />
           </div>

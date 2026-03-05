@@ -14,6 +14,7 @@ export const translations = {
         heroDesc: "Expert AI implementation and high-conversion 3D web experiences. We build RAG Chatbots and stunning landing pages to automate and scale your business.",
         heroBtnPrimary: "View Services",
         heroBtnSecondary: "Consult With Us",
+        heroBtnContactUs: "Consultant",
 
         // Features Section
         featHeadingPart1: "Why Smart Businesses Choose ",
@@ -99,6 +100,7 @@ export const translations = {
         heroDesc: "Implementasi AI canggih dan pembuatan web profesional berkonversi tinggi. Kami membangun Chatbot otomatis dan landing page memukau untuk melipatgandakan keuntungan Anda tanpa menambah beban operasional.",
         heroBtnPrimary: "Lihat Layanan Kami",
         heroBtnSecondary: "Konsultasi Gratis",
+        heroBtnContactUs: "Konsultasi",
 
         // Features Section
         featHeadingPart1: "Kenapa Pebisnis Cerdas Memilih ",
