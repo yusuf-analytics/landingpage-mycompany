@@ -36,7 +36,7 @@ export default function ServiceDetail() {
                 <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <button
                         className="btn-secondary"
-                        onClick={() => router.push('/#services')}
+                        onClick={() => router.push('/')}
                         style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', fontSize: '0.9rem', width: 'auto', minWidth: 'auto', margin: 0 }}
                     >
                         <ArrowLeft size={16} />
@@ -96,7 +96,7 @@ export default function ServiceDetail() {
                     >
                         <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>Ready to Deploy?</h3>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>Let our engineers build this custom solution for your business.</p>
-                        <button className="btn-primary" style={{ width: '100%', maxWidth: '300px' }} onClick={() => router.push('/#demo')}>
+                        <button className="btn-primary" style={{ width: '100%', maxWidth: '300px' }} onClick={() => router.push('/')}>
                             Request Consultation
                         </button>
                     </motion.div>
