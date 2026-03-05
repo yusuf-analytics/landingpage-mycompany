@@ -195,12 +195,12 @@ export default function ChatbotMock() {
                                         key={idx}
                                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        className="chat-message-container"
                                         style={{
                                             display: 'flex',
                                             alignItems: 'flex-start',
                                             gap: '12px',
                                             alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                                            maxWidth: '85%',
                                             flexDirection: msg.role === 'user' ? 'row-reverse' : 'row'
                                         }}
                                     >
@@ -211,17 +211,17 @@ export default function ChatbotMock() {
                                         }}>
                                             {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                                         </div>
-                                        <div style={{
-                                            padding: '12px 16px',
-                                            borderRadius: '16px',
-                                            background: msg.role === 'user' ? 'var(--accent-primary)' : 'var(--glass-bg)',
-                                            color: msg.role === 'user' ? '#fff' : 'var(--text-primary)',
-                                            borderTopRightRadius: msg.role === 'user' ? '4px' : '16px',
-                                            borderTopLeftRadius: msg.role === 'bot' ? '4px' : '16px',
-                                            fontSize: '0.95rem',
-                                            border: msg.role === 'bot' ? '1px solid var(--glass-border)' : 'none',
-                                            lineHeight: 1.5
-                                        }}>
+                                        <div
+                                            className="chat-message-content"
+                                            style={{
+                                                borderRadius: '16px',
+                                                background: msg.role === 'user' ? 'var(--accent-primary)' : 'var(--glass-bg)',
+                                                color: msg.role === 'user' ? '#fff' : 'var(--text-primary)',
+                                                borderTopRightRadius: msg.role === 'user' ? '4px' : '16px',
+                                                borderTopLeftRadius: msg.role === 'bot' ? '4px' : '16px',
+                                                border: msg.role === 'bot' ? '1px solid var(--glass-border)' : 'none',
+                                            }}
+                                        >
                                             {renderFormattedText(msg.text)}
                                         </div>
                                     </motion.div>
