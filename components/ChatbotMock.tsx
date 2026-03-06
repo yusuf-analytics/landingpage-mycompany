@@ -89,6 +89,17 @@ export default function ChatbotMock() {
         scrollToBottom();
     }, [messages]);
 
+    const handleBlur = () => {
+        // Fix for mobile devices (especially iOS) where closing the keyboard leaves the layout shifted.
+        setTimeout(() => {
+            window.scrollTo({
+                top: window.scrollY,
+                left: window.scrollX,
+                behavior: 'smooth'
+            });
+        }, 100);
+    };
+
     const handleSend = async () => {
         if (!input.trim()) return;
 
@@ -237,6 +248,7 @@ export default function ChatbotMock() {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                                onBlur={handleBlur}
                                 placeholder={t.chatPlaceholder}
                                 style={{
                                     flex: 1,
