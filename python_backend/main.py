@@ -31,7 +31,7 @@ async def lifespan(app: FastAPI):
     print("Loading RAG Pipeline...")
 
     try:
-        llm = ChatGroq(model="llama-3.1-8b-instant")
+        llm = ChatGroq(model="llama-3.3-70b-versatile")
         
         system_prompt = """Kamu adalah "Verqoz AI", asisten virtual pintar dan representatif sales eksklusif dari Verqoz.
 Berbicaralah dengan pengguna secara sopan, ramah, dan profesional menggunakan bahasa Indonesia.
