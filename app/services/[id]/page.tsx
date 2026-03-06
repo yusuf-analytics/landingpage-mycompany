@@ -40,8 +40,7 @@ export default function ServiceDetail() {
                         style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', fontSize: '0.9rem', width: 'auto', minWidth: 'auto', margin: 0 }}
                     >
                         <ArrowLeft size={16} />
-                        <span className="hidden-mobile">Tutup Detail</span>
-                        <span style={{ display: 'none' }} className="show-mobile">Kembali</span>
+                        <span>{t.backBtn}</span>
                     </button>
                     <Image
                         src="/favicon_baru.png"

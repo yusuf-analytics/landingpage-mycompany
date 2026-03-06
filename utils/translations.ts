@@ -86,6 +86,7 @@ export const translations = {
         chatPlaceholder: "Type your business inquiry...",
         chatMockHighlight1: "\"This isn't just a simple keyword responder.\"",
         chatMockHighlight2: "Our generative AI models ingest your business knowledge base, providing accurate, contextual, and deeply helpful responses to your clients 24/7.",
+        backBtn: "Back",
     },
     id: {
         // Navbar & Footer
@@ -172,5 +173,6 @@ export const translations = {
         chatPlaceholder: "Ketik pertanyaan bisnis Anda di sini...",
         chatMockHighlight1: "\"Ini bukan sekadar chatbot penjawab otomatis biasa.\"",
         chatMockHighlight2: "Model AI generatif kami mempelajari basis pengetahuan bisnis Anda untuk memberikan respons yang cerdas, akurat, dan sangat membantu pelanggan Anda 24 jam penuh.",
+        backBtn: "Kembali",
     }
 };
