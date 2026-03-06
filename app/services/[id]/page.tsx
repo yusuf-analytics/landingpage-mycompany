@@ -1,6 +1,7 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { serviceData, ServiceId } from '@/utils/serviceData';
 import { useAppContext } from '@/components/Providers';
 import { motion } from 'framer-motion';
@@ -13,6 +14,19 @@ export default function ServiceDetail() {
     const router = useRouter();
     const { t } = useAppContext();
     const slug = params.id as string;
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const entries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+            const isReload = entries.length > 0
+                ? entries[0].type === "reload"
+                : performance.navigation?.type === 1;
+
+            if (isReload) {
+                router.replace('/');
+            }
+        }
+    }, [router]);
 
     const data = Object.values(serviceData).find(
         (s) => s.slugEn === slug || s.slugId === slug
